@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Seoul Beauty & Plastic Surgery Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-dark: #9B7A42;
+    --cream: #FAF7F2;
+    --dark: #0E0E0E;
+    --dark2: #1A1814;
+    --charcoal: #2C2A27;
+    --text-muted: #8A8480;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── LANGUAGE BAR ── */
+  .lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,9,8,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+  }
+
+  .lang-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-weight: 300;
+  }
+
+  .lang-btns { display: flex; gap: 6px; }
+
+  .lang-btn {
+    padding: 5px 14px;
+    border: 1px solid rgba(201,169,110,0.3);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s;
+  }
+
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 60px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.06) 0%, transparent 50%),
+      linear-gradient(180deg, #0E0E0E 0%, #141210 50%, #0E0E0E 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 700px;
+    animation: fadeUp 1.2s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding: 8px 20px;
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 10vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(250,247,242,0.6);
+    line-height: 1.9;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  /* multilingual hero subtitle */
+  .hero-langs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-lang-tag {
+    font-size: 12px;
+    color: var(--gold-light);
+    opacity: 0.7;
+    letter-spacing: 1px;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-gold {
+    padding: 14px 32px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,169,110,0.5);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.08);
+    transform: translateY(-2px);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 90px 24px; }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 50px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    max-width: 520px;
+    margin-bottom: 56px;
+  }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,169,110,0.15);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    padding: 40px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 0 24px;
+    border-right: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    color: var(--gold);
+    font-weight: 300;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── CLINICS ── */
+  .clinics-section { background: var(--dark); }
+
+  .clinics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .clinic-card {
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.1);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+
+  .clinic-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transition: transform 0.4s;
+    transform-origin: bottom;
+  }
+
+  .clinic-card:hover::before { transform: scaleY(1); }
+  .clinic-card:hover { border-color: rgba(201,169,110,0.3); transform: translateX(6px); }
+
+  .clinic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .clinic-badge {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.4);
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .clinic-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .clinic-type {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .clinic-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .clinic-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .clinic-tag {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    background: rgba(201,169,110,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .clinic-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .clinic-location {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  .clinic-cta {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.3s;
+    padding: 0;
+  }
+
+  .clinic-cta:hover { gap: 10px; }
+
+  .clinic-cta::after { content: '→'; }
+
+  /* ── SERVICES ── */
+  .services-section { background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: rgba(201,169,110,0.03);
+    border: 1px solid rgba(201,169,110,0.1);
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .service-card:hover {
+    background: rgba(201,169,110,0.07);
+    border-color: rgba(201,169,110,0.3);
+  }
+
+  .service-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .service-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ── CONSULTATION CHAT ── */
+  .chat-section { background: var(--dark2); }
+
+  .chat-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--dark);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    background: var(--charcoal);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .chat-avatar {
+    width: 38px; height: 38px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .chat-name { font-size: 14px; color: var(--white); font-weight: 400; }
+  .chat-status { font-size: 11px; color: #4CAF50; letter-spacing: 1px; }
+
+  .chat-body {
+    height: 280px;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-behavior: smooth;
+  }
+
+  .chat-body::-webkit-scrollbar { width: 4px; }
+  .chat-body::-webkit-scrollbar-track { background: transparent; }
+  .chat-body::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.3); border-radius: 2px; }
+
+  .msg {
+    display: flex;
+    gap: 10px;
+    animation: msgIn 0.3s ease;
+  }
+
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.user { flex-direction: row-reverse; }
+
+  .msg-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    border: 1px solid rgba(201,169,110,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .msg.user .msg-avatar { background: var(--gold); }
+
+  .msg-bubble {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .msg-bubble.bot {
+    background: var(--charcoal);
+    color: var(--cream);
+    border: 1px solid rgba(201,169,110,0.1);
+    border-bottom-left-radius: 0;
+  }
+
+  .msg-bubble.user {
+    background: var(--gold);
+    color: var(--dark);
+    border-bottom-right-radius: 0;
+  }
+
+  .msg-time {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .msg.user .msg-time { text-align: right; }
+
+  .quick-replies {
+    padding: 12px 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .quick-reply {
+    padding: 7px 14px;
+    border: 1px solid rgba(201,169,110,0.3);
+    background: transparent;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .quick-reply:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .chat-input-row {
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(201,169,110,0.15);
+    align-items: center;
+  }
+
+  .chat-input {
+    flex: 1;
+    background: var(--charcoal);
+    border: 1px solid rgba(201,169,110,0.15);
+    color: var(--cream);
+    padding: 11px 16px;
+    font-size: 13px;
+    font-family: 'Jost', sans-serif;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .chat-input:focus { border-color: rgba(201,169,110,0.5); }
+  .chat-input::placeholder { color: var(--text-muted); }
+
+  .chat-send {
+    width: 42px; height: 42px;
+    background: var(--gold);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .chat-send:hover { background: var(--gold-light); transform: scale(1.05); }
+
+  /* ── KAKAO ── */
+  .kakao-banner {
+    background: linear-gradient(135deg, #FAE100 0%, #F9D900 100%);
+    margin: 0 24px;
+    border-radius: 4px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 852px;
+    margin: 0 auto 40px;
+  }
+
+  .kakao-left { display: flex; align-items: center; gap: 16px; }
+
+  .kakao-icon {
+    width: 48px; height: 48px;
+    background: rgba(0,0,0,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .kakao-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 2px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .kakao-sub {
+    font-size: 11px;
+    color: rgba(0,0,0,0.6);
+    letter-spacing: 1px;
+  }
+
+  .kakao-btn {
+    padding: 12px 24px;
+    background: rgba(0,0,0,0.12);
+    color: var(--dark);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .kakao-btn:hover { background: rgba(0,0,0,0.2); }
+
+  /* ── BOOKING ── */
+  .booking-section { background: var(--dark); }
+
+  .booking-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 44px 32px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    background: var(--dark);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--cream);
+    padding: 13px 16px;
+    font-size: 13px;
+    font-family: 'Jost', sans-serif;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96E' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  .form-select option { background: var(--dark2); color: var(--cream); }
+
+  .form-textarea { min-height: 100px; resize: vertical; }
+
+  .form-submit-row {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,169,110,0.15);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .footer-langs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-lang { font-size: 11px; color: var(--text-muted); }
+
+  /* ── FLOATING ── */
+  .float-btns {
+    position: fixed;
+    bottom: 28px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 900;
+  }
+
+  .float-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .float-kakao { background: #FAE100; }
+  .float-chat { background: var(--gold); }
+
+  .float-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,0,0,0.5); }
+
+  .float-label {
+    position: absolute;
+    right: 60px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--white);
+    background: rgba(0,0,0,0.7);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .float-btn:hover .float-label { opacity: 1; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: var(--gold);
+    color: var(--dark);
+    padding: 12px 24px;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s;
+    pointer-events: none;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(201,169,110,0.15); padding: 16px 0; min-width: 45%; }
+    .kakao-banner { flex-direction: column; text-align: center; }
+    .kakao-left { flex-direction: column; text-align: center; }
+  }
+
+  /* ── RTL support for Arabic ── */
+  .rtl { direction: rtl; font-family: Arial, sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<header class="lang-bar">
+  <div class="lang-logo">SEOUL BEAUTY</div>
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+    <button class="lang-btn" onclick="setLang('th')">ไทย</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow" data-en="Korea's Premier Medical Beauty Guide" data-ar="دليلك الأمثل للجمال الطبي في كوريا" data-th="คู่มือความงามทางการแพทย์ชั้นนำของเกาหลี">Korea's Premier Medical Beauty Guide</span>
+    <h1>
+      <span data-en="Transform in" data-ar="تحوّل في" data-th="เปลี่ยนแปลงใน">Transform in</span><br>
+      <em>Seoul</em>
+    </h1>
+    <p class="hero-sub" data-en="World-Class Plastic Surgery · Seoul, Korea" data-ar="جراحة تجميلية عالمية المستوى · سيول، كوريا" data-th="ศัลยกรรมพลาสติกระดับโลก · โซล, เกาหลี">World-Class Plastic Surgery · Seoul, Korea</p>
+    <p class="hero-desc" data-en="Discover Korea's most trusted clinics for eye, nose, and facial contouring surgery — with full consultation support for Middle East and Thai patients." data-ar="اكتشف أفضل عيادات كوريا وأكثرها موثوقية لعمليات العيون والأنف ورسم ملامح الوجه — مع دعم استشاري متكامل للمرضى من الشرق الأوسط وتايلاند." data-th="ค้นพบคลินิกที่น่าเชื่อถือที่สุดของเกาหลีสำหรับศัลยกรรมตา จมูก และการปรับโครงหน้า พร้อมการสนับสนุนการปรึกษาแบบครบวงจรสำหรับผู้ป่วยจากตะวันออกกลางและไทย">Discover Korea's most trusted clinics for eye, nose, and facial contouring surgery — with full consultation support for Middle East and Thai patients.</p>
+    <div class="hero-cta-row">
+      <a href="#clinics" class="btn-gold" data-en="Explore Clinics" data-ar="استكشف العيادات" data-th="สำรวจคลินิก">Explore Clinics</a>
+      <a href="#booking" class="btn-outline" data-en="Book Consultation" data-ar="احجز استشارة" data-th="จองการปรึกษา">Book Consultation</a>
+    </div>
+  </div>
+  <div class="scroll-hint" data-en="scroll" data-ar="تمرير" data-th="เลื่อน">scroll</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">500+</span>
+    <span class="stat-label" data-en="International Patients" data-ar="مريض دولي" data-th="ผู้ป่วยต่างชาติ">International Patients</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">15+</span>
+    <span class="stat-label" data-en="Partner Clinics" data-ar="عيادة شريكة" data-th="คลินิกพาร์ทเนอร์">Partner Clinics</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">98%</span>
+    <span class="stat-label" data-en="Satisfaction Rate" data-ar="معدل الرضا" data-th="อัตราความพึงพอใจ">Satisfaction Rate</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">24/7</span>
+    <span class="stat-label" data-en="Support Available" data-ar="دعم متاح" data-th="การสนับสนุน">Support Available</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label" data-en="Our Specialties" data-ar="تخصصاتنا" data-th="ความเชี่ยวชาญของเรา">Our Specialties</div>
+    <h2 class="section-title" data-en="Surgical <em>Expertise</em>" data-ar="خبرة <em>جراحية</em>" data-th="ความ<em>เชี่ยวชาญ</em>ด้านศัลยกรรม">Surgical <em>Expertise</em></h2>
+    <p class="section-desc" data-en="Three pillars of Korean aesthetic surgery, performed by board-certified surgeons with international experience." data-ar="ثلاثة محاور لجراحة التجميل الكورية، يجريها جراحون معتمدون بخبرة دولية." data-th="สามเสาหลักของศัลยกรรมเสริมความงามเกาหลี ดำเนินการโดยศัลยแพทย์ที่ได้รับการรับรองและมีประสบการณ์ระดับนานาชาติ">Three pillars of Korean aesthetic surgery, performed by board-certified surgeons with international experience.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">👁️</span>
+        <div class="service-name" data-en="Eye Surgery" data-ar="جراحة العيون" data-th="ศัลยกรรมตา">Eye Surgery</div>
+        <div class="service-desc" data-en="Double eyelid surgery, epicanthoplasty, ptosis correction. Natural, lasting results tailored to your facial structure." data-ar="جراحة الجفن المزدوج، وتصحيح تدلي الجفن. نتائج طبيعية ودائمة." data-th="ผ่าตัดตาสองชั้น ผ่าตัดหางตา แก้ไขหนังตาตก ผลลัพธ์ที่เป็นธรรมชาติและยาวนาน">Double eyelid surgery, epicanthoplasty, ptosis correction. Natural, lasting results tailored to your facial structure.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">👃</span>
+        <div class="service-name" data-en="Rhinoplasty" data-ar="تجميل الأنف" data-th="ศัลยกรรมจมูก">Rhinoplasty</div>
+        <div class="service-desc" data-en="Bridge augmentation, tip refinement, alar reduction. Korean rhinoplasty specialists with over 10 years experience." data-ar="تعزيز جسر الأنف وتحسين طرفه. متخصصون كوريون في تجميل الأنف." data-th="เสริมสันจมูก แก้ปลายจมูก ลดขนาดปีกจมูก ผู้เชี่ยวชาญศัลยกรรมจมูกเกาหลี">Bridge augmentation, tip refinement, alar reduction. Korean rhinoplasty specialists with over 10 years experience.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✨</span>
+        <div class="service-name" data-en="Facial Contouring" data-ar="تشكيل ملامح الوجه" data-th="การปรับรูปหน้า">Facial Contouring</div>
+        <div class="service-desc" data-en="Jaw reduction, cheekbone surgery, chin implants. Create the perfect V-line or oval face shape." data-ar="تصغير الفك وجراحة عظام الخد وغرسات الذقن. اصنع شكل الوجه المثالي." data-th="ลดกราม ผ่าตัดโหนกแก้ม ใส่ซิลิโคนคาง สร้างรูปหน้า V-line หรือรูปไข่">Jaw reduction, cheekbone surgery, chin implants. Create the perfect V-line or oval face shape.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌏</span>
+        <div class="service-name" data-en="Full Concierge" data-ar="خدمة الكونسيرج الكاملة" data-th="บริการคอนเซียร์จครบวงจร">Full Concierge</div>
+        <div class="service-desc" data-en="Airport pickup, hotel, translator, clinic escort, recovery support. We handle everything for your Seoul journey." data-ar="استقبال من المطار، فندق، مترجم، مرافقة للعيادة. نتولى كل شيء." data-th="รับสนามบิน โรงแรม ล่าม พาไปคลินิก ดูแลช่วงพักฟื้น เราจัดการทุกอย่าง">Airport pickup, hotel, translator, clinic escort, recovery support. We handle everything for your Seoul journey.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLINICS -->
+<section class="clinics-section" id="clinics">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label" data-en="Verified Clinics" data-ar="عيادات موثوقة" data-th="คลินิกที่ผ่านการรับรอง">Verified Clinics</div>
+    <h2 class="section-title" data-en="Trusted <em>Partners</em>" data-ar="شركاء <em>موثوقون</em>" data-th="พาร์ทเนอร์ที่<em>น่าเชื่อถือ</em>">Trusted <em>Partners</em></h2>
+    <p class="section-desc" data-en="Every clinic is personally verified for safety standards, board-certified surgeons, and international patient experience." data-ar="كل عيادة تم التحقق منها شخصياً بحسب معايير السلامة والجراحين المعتمدين وتجربة المرضى الدوليين." data-th="คลินิกทุกแห่งได้รับการตรวจสอบด้านมาตรฐานความปลอดภัย ศัลยแพทย์ที่ได้รับการรับรอง และประสบการณ์ผู้ป่วยต่างชาติ">Every clinic is personally verified for safety standards, board-certified surgeons, and international patient experience.</p>
+
+    <div class="clinics-grid">
+      <!-- Clinic 1 -->
+      <div class="clinic-card">
+        <div class="clinic-header">
+          <div>
+            <div class="clinic-name" data-en="View Plastic Surgery" data-ar="مستشفى فيو للجراحة التجميلية" data-th="วิว พลาสติก เซอร์เจอรี">View Plastic Surgery</div>
+          </div>
+          <span class="clinic-badge" data-en="Eye · Nose" data-ar="عيون · أنف" data-th="ตา · จมูก">Eye · Nose</span>
+        </div>
+        <div class="clinic-type" data-en="Gangnam, Seoul" data-ar="غانغنام، سيول" data-th="กังนัม, โซล">Gangnam, Seoul</div>
+        <p class="clinic-desc" data-en="One of Gangnam's most renowned clinics specialising in double eyelid and rhinoplasty. Over 20 years of experience with Middle Eastern and Southeast Asian patients. Arabic-speaking coordinator available." data-ar="واحدة من أبرز عيادات غانغنام المتخصصة في جراحة الجفن المزدوج وتجميل الأنف. تجربة أكثر من 20 عامًا مع مرضى من الشرق الأوسط وجنوب شرق آسيا. يتوفر منسق يتحدث العربية." data-th="หนึ่งในคลินิกที่มีชื่อเสียงที่สุดในกังนัม เชี่ยวชาญด้านตาสองชั้นและศัลยกรรมจมูก มีประสบการณ์มากกว่า 20 ปีกับผู้ป่วยจากตะวันออกกลางและเอเชียตะวันออกเฉียงใต้ มีล่ามภาษาไทย">One of Gangnam's most renowned clinics specialising in double eyelid and rhinoplasty. Over 20 years of experience with Middle Eastern and Southeast Asian patients. Arabic-speaking coordinator available.</p>
+        <div class="clinic-features">
+          <span class="clinic-tag" data-en="Arabic Support" data-ar="دعم عربي" data-th="รองรับภาษาอาหรับ">Arabic Support</span>
+          <span class="clinic-tag" data-en="Thai Support" data-ar="دعم تايلاندي" data-th="รองรับภาษาไทย">Thai Support</span>
+          <span class="clinic-tag" data-en="Hospital Grade" data-ar="درجة المستشفى" data-th="ระดับโรงพยาบาล">Hospital Grade</span>
+          <span class="clinic-tag" data-en="Free Consultation" data-ar="استشارة مجانية" data-th="ปรึกษาฟรี">Free Consultation</span>
+        </div>
+        <div class="clinic-footer">
+          <span class="clinic-location">📍 Gangnam-gu, Seoul</span>
+          <button class="clinic-cta" onclick="openBooking('View Plastic Surgery')" data-en="Enquire" data-ar="استفسر" data-th="สอบถาม">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Clinic 2 -->
+      <div class="clinic-card">
+        <div class="clinic-header">
+          <div>
+            <div class="clinic-name" data-en="THE PLUS Plastic Surgery" data-ar="ذا بلاس لجراحة التجميل" data-th="เดอะพลัส พลาสติก เซอร์เจอรี">THE PLUS Plastic Surgery</div>
+          </div>
+          <span class="clinic-badge" data-en="Contouring" data-ar="تشكيل الوجه" data-th="ปรับรูปหน้า">Contouring</span>
+        </div>
+        <div class="clinic-type" data-en="Sinsa-dong, Seoul" data-ar="سينسادونغ، سيول" data-th="ซินซาดง, โซล">Sinsa-dong, Seoul</div>
+        <p class="clinic-desc" data-en="Korea's leading facial contouring specialists. Jawline, cheekbone, and forehead contouring with advanced 3D simulation technology. Trusted by patients from over 40 countries." data-ar="متخصصون رائدون في تشكيل ملامح الوجه في كوريا. خدمات الفك والخد والجبهة بتقنية المحاكاة ثلاثية الأبعاد." data-th="ผู้เชี่ยวชาญด้านการปรับรูปหน้าชั้นนำของเกาหลี ปรับกราม โหนกแก้ม และหน้าผากด้วยเทคโนโลยี 3D simulation ล่าสุด">Korea's leading facial contouring specialists. Jawline, cheekbone, and forehead contouring with advanced 3D simulation technology. Trusted by patients from over 40 countries.</p>
+        <div class="clinic-features">
+          <span class="clinic-tag" data-en="3D Simulation" data-ar="محاكاة ثلاثية الأبعاد" data-th="จำลอง 3D">3D Simulation</span>
+          <span class="clinic-tag" data-en="40+ Countries" data-ar="40+ دولة" data-th="40+ ประเทศ">40+ Countries</span>
+          <span class="clinic-tag" data-en="Board Certified" data-ar="معتمد رسمياً" data-th="ได้รับการรับรอง">Board Certified</span>
+        </div>
+        <div class="clinic-footer">
+          <span class="clinic-location">📍 Sinsa-dong, Seoul</span>
+          <button class="clinic-cta" onclick="openBooking('THE PLUS Plastic Surgery')" data-en="Enquire" data-ar="استفسر" data-th="สอบถาม">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Clinic 3 -->
+      <div class="clinic-card">
+        <div class="clinic-header">
+          <div>
+            <div class="clinic-name" data-en="WONJIN Aesthetic Surgery" data-ar="مستشفى ونجين للتجميل" data-th="วอนจิน เอสทีติก เซอร์เจอรี">WONJIN Aesthetic Surgery</div>
+          </div>
+          <span class="clinic-badge" data-en="Eye·Nose·Contour" data-ar="عيون·أنف·محيط" data-th="ตา·จมูก·หน้า">Eye·Nose·Contour</span>
+        </div>
+        <div class="clinic-type" data-en="Gangnam, Seoul" data-ar="غانغنام، سيول" data-th="กังนัม, โซล">Gangnam, Seoul</div>
+        <p class="clinic-desc" data-en="Full-service aesthetic hospital with dedicated international patient centre. Packages designed specifically for visitors from the Middle East and Thailand, including recovery accommodation and aftercare." data-ar="مستشفى تجميل متكامل مع مركز متخصص للمرضى الدوليين. باقات مصممة خصيصاً للزوار من الشرق الأوسط وتايلاند." data-th="โรงพยาบาลเสริมความงามแบบครบวงจร พร้อมศูนย์ผู้ป่วยต่างชาติโดยเฉพาะ แพ็คเกจออกแบบมาเพื่อผู้มาเยือนจากตะวันออกกลางและไทย">Full-service aesthetic hospital with dedicated international patient centre. Packages designed specifically for visitors from the Middle East and Thailand, including recovery accommodation and aftercare.</p>
+        <div class="clinic-features">
+          <span class="clinic-tag" data-en="Recovery Package" data-ar="باقة التعافي" data-th="แพ็คเกจพักฟื้น">Recovery Package</span>
+          <span class="clinic-tag" data-en="International Centre" data-ar="مركز دولي" data-th="ศูนย์นานาชาติ">International Centre</span>
+          <span class="clinic-tag" data-en="All-inclusive" data-ar="شامل" data-th="ครบวงจร">All-inclusive</span>
+          <span class="clinic-tag" data-en="Halal Diet" data-ar="حلال" data-th="อาหารฮาลาล">Halal Diet</span>
+        </div>
+        <div class="clinic-footer">
+          <span class="clinic-location">📍 Gangnam-gu, Seoul</span>
+          <button class="clinic-cta" onclick="openBooking('WONJIN Aesthetic Surgery')" data-en="Enquire" data-ar="استفسر" data-th="สอบถาม">Enquire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT & KAKAO -->
+<section class="chat-section" id="chat">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label" data-en="Instant Support" data-ar="دعم فوري" data-th="การสนับสนุนทันที">Instant Support</div>
+    <h2 class="section-title" style="margin-bottom:40px;" data-en="Chat with our <em>Advisor</em>" data-ar="تحدث مع <em>مستشارنا</em>" data-th="แชทกับ<em>ที่ปรึกษา</em>ของเรา">Chat with our <em>Advisor</em></h2>
+
+    <!-- Kakao Banner -->
+    <div class="kakao-banner">
+      <div class="kakao-left">
+        <div class="kakao-icon">💬</div>
+        <div>
+          <div class="kakao-title" data-en="Connect via KakaoTalk" data-ar="تواصل عبر كاكاو توك" data-th="ติดต่อผ่าน KakaoTalk">Connect via KakaoTalk</div>
+          <div class="kakao-sub" data-en="@SeoulBeautyGuide · Available 09:00 – 22:00 KST" data-ar="@SeoulBeautyGuide · متاح 09:00 – 22:00 بتوقيت كوريا" data-th="@SeoulBeautyGuide · พร้อมให้บริการ 09:00 – 22:00 KST">@SeoulBeautyGuide · Available 09:00 – 22:00 KST</div>
+        </div>
+      </div>
+      <a href="https://pf.kakao.com" target="_blank" class="kakao-btn" data-en="Open KakaoTalk" data-ar="افتح كاكاو توك" data-th="เปิด KakaoTalk">Open KakaoTalk</a>
+    </div>
+
+    <!-- Live Chat -->
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="chat-avatar">👩‍⚕️</div>
+        <div>
+          <div class="chat-name" data-en="Seoul Beauty Advisor" data-ar="مستشارة سيول للجمال" data-th="ที่ปรึกษาความงามโซล">Seoul Beauty Advisor</div>
+          <div class="chat-status" data-en="● Online now" data-ar="● متاحة الآن" data-th="● ออนไลน์อยู่">● Online now</div>
+        </div>
+      </div>
+
+      <div class="chat-body" id="chatBody">
+        <div class="msg">
+          <div class="msg-avatar">👩‍⚕️</div>
+          <div>
+            <div class="msg-bubble bot" id="welcomeMsg">Hello! Welcome to Seoul Beauty Guide 😊 I'm here to help you find the perfect clinic. What surgery are you interested in?</div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-replies" id="quickReplies">
+        <button class="quick-reply" onclick="sendQuick(this)" data-en="👁 Eye Surgery" data-ar="👁 جراحة العيون" data-th="👁 ศัลยกรรมตา">👁 Eye Surgery</button>
+        <button class="quick-reply" onclick="sendQuick(this)" data-en="👃 Rhinoplasty" data-ar="👃 تجميل الأنف" data-th="👃 ศัลยกรรมจมูก">👃 Rhinoplasty</button>
+        <button class="quick-reply" onclick="sendQuick(this)" data-en="✨ Facial Contouring" data-ar="✨ تشكيل الوجه" data-th="✨ ปรับรูปหน้า">✨ Facial Contouring</button>
+        <button class="quick-reply" onclick="sendQuick(this)" data-en="💰 Pricing" data-ar="💰 الأسعار" data-th="💰 ราคา">💰 Pricing</button>
+      </div>
+
+      <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter') sendMsg()">
+        <button class="chat-send" onclick="sendMsg()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label" data-en="Consultation Booking" data-ar="حجز الاستشارة" data-th="จองการปรึกษา">Consultation Booking</div>
+    <h2 class="section-title" data-en="Reserve your <em>Consultation</em>" data-ar="احجز <em>استشارتك</em>" data-th="จอง<em>การปรึกษา</em>ของคุณ">Reserve your <em>Consultation</em></h2>
+    <p class="section-desc" data-en="Fill in the form below and our international coordinator will contact you within 24 hours to confirm your appointment." data-ar="أكمل النموذج أدناه وسيتواصل معك منسقنا الدولي خلال 24 ساعة لتأكيد موعدك." data-th="กรอกแบบฟอร์มด้านล่างและผู้ประสานงานระดับนานาชาติของเราจะติดต่อคุณภายใน 24 ชั่วโมงเพื่อยืนยันการนัดหมาย">Fill in the form below and our international coordinator will contact you within 24 hours to confirm your appointment.</p>
+
+    <div class="booking-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-en="Full Name" data-ar="الاسم الكامل" data-th="ชื่อ-นามสกุล">Full Name</label>
+          <input class="form-input" type="text" id="f-name" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Country" data-ar="البلد" data-th="ประเทศ">Country</label>
+          <select class="form-select" id="f-country">
+            <option value="">Select country</option>
+            <option>Saudi Arabia / المملكة العربية السعودية</option>
+            <option>UAE / الإمارات</option>
+            <option>Kuwait / الكويت</option>
+            <option>Qatar / قطر</option>
+            <option>Bahrain / البحرين</option>
+            <option>Oman / عُمان</option>
+            <option>Jordan / الأردن</option>
+            <option>Thailand / ประเทศไทย</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="WhatsApp / Phone" data-ar="واتساب / هاتف" data-th="WhatsApp / โทรศัพท์">WhatsApp / Phone</label>
+          <input class="form-input" type="tel" id="f-phone" placeholder="+1 234 567 8900">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Email" data-ar="البريد الإلكتروني" data-th="อีเมล">Email</label>
+          <input class="form-input" type="email" id="f-email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Surgery Interest" data-ar="الجراحة المطلوبة" data-th="สนใจผ่าตัด">Surgery Interest</label>
+          <select class="form-select" id="f-surgery">
+            <option value="">Select procedure</option>
+            <option data-en="Eye Surgery (Double Eyelid)" data-ar="جراحة العيون" data-th="ศัลยกรรมตา">Eye Surgery (Double Eyelid)</option>
+            <option>Rhinoplasty (Nose Surgery)</option>
+            <option>Facial Contouring (Jaw / Cheek)</option>
+            <option>Combined Package (Eye + Nose)</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Preferred Clinic" data-ar="العيادة المفضلة" data-th="คลินิกที่ต้องการ">Preferred Clinic</label>
+          <select class="form-select" id="f-clinic">
+            <option value="">No preference</option>
+            <option>View Plastic Surgery</option>
+            <option>THE PLUS Plastic Surgery</option>
+            <option>WONJIN Aesthetic Surgery</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Planned Visit Date" data-ar="تاريخ الزيارة المخطط" data-th="วันที่วางแผนมา">Planned Visit Date</label>
+          <input class="form-input" type="month" id="f-date">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Preferred Language" data-ar="اللغة المفضلة" data-th="ภาษาที่ต้องการ">Preferred Language</label>
+          <select class="form-select" id="f-lang">
+            <option>English</option>
+            <option>Arabic / العربية</option>
+            <option>Thai / ภาษาไทย</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-en="Additional Information" data-ar="معلومات إضافية" data-th="ข้อมูลเพิ่มเติม">Additional Information</label>
+          <textarea class="form-textarea" id="f-notes" placeholder="Any concerns, medical history notes, or questions..."></textarea>
+        </div>
+      </div>
+      <div class="form-submit-row">
+        <button class="btn-gold" onclick="submitForm()" style="padding: 16px 56px; font-size:12px;" data-en="REQUEST CONSULTATION" data-ar="طلب استشارة" data-th="ขอคำปรึกษา">REQUEST CONSULTATION</button>
+      </div>
+      <p class="form-note" data-en="🔒 Your information is private and never shared. Our team will respond within 24 hours." data-ar="🔒 معلوماتك خاصة ولن تُشارك. سيرد فريقنا خلال 24 ساعة." data-th="🔒 ข้อมูลของคุณเป็นความลับและไม่เปิดเผย ทีมงานจะตอบกลับภายใน 24 ชั่วโมง">🔒 Your information is private and never shared. Our team will respond within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SEOUL BEAUTY GUIDE</div>
+  <p class="footer-text" data-en="Your trusted partner for plastic surgery in Korea.<br>Serving Middle East, Thailand & International Patients." data-ar="شريكك الموثوق لجراحة التجميل في كوريا.<br>نخدم مرضى من الشرق الأوسط وتايلاند وجميع أنحاء العالم." data-th="พาร์ทเนอร์ที่น่าเชื่อถือของคุณสำหรับศัลยกรรมพลาสติกในเกาหลี<br>ให้บริการผู้ป่วยจากตะวันออกกลาง ไทย และต่างประเทศ">Your trusted partner for plastic surgery in Korea.<br>Serving Middle East, Thailand & International Patients.</p>
+  <div class="footer-langs">
+    <span class="footer-lang">English</span>
+    <span class="footer-lang">·</span>
+    <span class="footer-lang">العربية</span>
+    <span class="footer-lang">·</span>
+    <span class="footer-lang">ภาษาไทย</span>
+  </div>
+  <p style="font-size:10px; color:rgba(138,132,128,0.4); margin-top:24px; letter-spacing:1px;">© 2025 Seoul Beauty Guide · All Rights Reserved</p>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://pf.kakao.com" target="_blank" class="float-btn float-kakao" title="KakaoTalk">
+    <span class="float-label">KakaoTalk</span>
+    💬
+  </a>
+  <button class="float-btn float-chat" onclick="scrollToChat()" title="Live Chat">
+    <span class="float-label">Live Chat</span>
+    🗨
+  </button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── LANGUAGE SYSTEM ──
+  let currentLang = 'en';
+  const langDir = { en: 'ltr', ar: 'rtl', th: 'ltr' };
+  const placeholders = {
+    en: { chatInput: 'Type your question...', name: 'Your full name', phone: '+1 234 567 8900', email: 'your@email.com', notes: 'Any concerns, medical history notes, or questions...', welcome: "Hello! Welcome to Seoul Beauty Guide 😊 I'm here to help you find the perfect clinic. What surgery are you interested in?" },
+    ar: { chatInput: 'اكتب سؤالك...', name: 'اسمك الكامل', phone: '+966 5X XXX XXXX', email: 'بريدك@الإلكتروني.com', notes: 'أي مخاوف أو ملاحظات طبية أو أسئلة...', welcome: "مرحبًا! أهلاً بك في دليل سيول للجمال 😊 أنا هنا لمساعدتك في إيجاد العيادة المثالية. ما نوع الجراحة التي تهتم بها؟" },
+    th: { chatInput: 'พิมพ์คำถามของคุณ...', name: 'ชื่อ-นามสกุลของคุณ', phone: '+66 XX XXX XXXX', email: 'your@email.com', notes: 'ข้อกังวล ประวัติทางการแพทย์ หรือคำถามเพิ่มเติม...', welcome: "สวัสดีค่ะ! ยินดีต้อนรับสู่ Seoul Beauty Guide 😊 ฉันอยู่ที่นี่เพื่อช่วยคุณหาคลินิกที่ดีที่สุด คุณสนใจผ่าตัดอะไรคะ?" }
+  };
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = langDir[lang];
+
+    // Update all data-* text
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val) el.innerHTML = val;
+    });
+
+    // Update placeholders
+    const ph = placeholders[lang];
+    document.getElementById('chatInput').placeholder = ph.chatInput;
+    document.getElementById('f-name').placeholder = ph.name;
+    document.getElementById('f-phone').placeholder = ph.phone;
+    document.getElementById('f-email').placeholder = ph.email;
+    document.getElementById('f-notes').placeholder = ph.notes;
+    document.getElementById('welcomeMsg').textContent = ph.welcome;
+
+    // Update quick replies
+    document.querySelectorAll('.quick-reply').forEach(btn => {
+      const val = btn.getAttribute('data-' + lang);
+      if (val) btn.textContent = val;
+    });
+
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // ── CHAT SYSTEM ──
+  const botReplies = {
+    en: {
+      default: "Thank you for your message! Our advisor will get back to you shortly. You can also book a consultation below. 😊",
+      eye: "Eye surgery (double eyelid) is our most popular procedure! The recovery is about 2 weeks and results are beautiful and natural. Would you like me to recommend the best clinics for eye surgery?",
+      nose: "Rhinoplasty in Korea is world-renowned! Recovery is typically 2–3 weeks. Our top clinics specialise in natural-looking results. Would you like a free consultation?",
+      contour: "Facial contouring is a specialty of Korean surgeons. V-line jaw reduction and cheekbone surgery are very popular. Shall I connect you with a specialist?",
+      price: "Prices vary by procedure and clinic. Generally: Eye surgery $1,500–$3,000 · Rhinoplasty $2,500–$5,000 · Facial Contouring $4,000–$8,000. We can arrange a free quote!"
+    },
+    ar: {
+      default: "شكرًا لرسالتك! سيتواصل معك مستشارنا قريبًا. يمكنك أيضًا حجز استشارة أدناه. 😊",
+      eye: "جراحة العيون (الجفن المزدوج) هي أكثر إجراءاتنا شيوعًا! فترة التعافي حوالي أسبوعين والنتائج جميلة وطبيعية.",
+      nose: "تجميل الأنف في كوريا مشهور عالميًا! التعافي عادةً 2–3 أسابيع. هل تريد استشارة مجانية؟",
+      contour: "تشكيل الوجه من تخصصات الجراحين الكوريين. جراحة الفك والخد شائعة جداً. هل تريد التواصل مع متخصص؟",
+      price: "الأسعار تختلف حسب الإجراء والعيادة. عمومًا: جراحة العيون $1,500–$3,000 · الأنف $2,500–$5,000 · تشكيل الوجه $4,000–$8,000"
+    },
+    th: {
+      default: "ขอบคุณสำหรับข้อความของคุณ! ที่ปรึกษาของเราจะติดต่อกลับเร็วๆ นี้ คุณยังสามารถจองการปรึกษาด้านล่าง 😊",
+      eye: "ผ่าตัดตา (ตาสองชั้น) เป็นการผ่าตัดที่ได้รับความนิยมมากที่สุด! พักฟื้นประมาณ 2 สัปดาห์ ผลลัพธ์สวยงามและเป็นธรรมชาติ",
+      nose: "ศัลยกรรมจมูกในเกาหลีมีชื่อเสียงระดับโลก! พักฟื้นประมาณ 2–3 สัปดาห์ ต้องการปรึกษาฟรีไหมคะ?",
+      contour: "การปรับรูปหน้าเป็นความเชี่ยวชาญของศัลยแพทย์เกาหลี V-line และผ่าตัดโหนกแก้มได้รับความนิยมมาก",
+      price: "ราคาขึ้นอยู่กับการผ่าตัดและคลินิก โดยทั่วไป: ตา $1,500–$3,000 · จมูก $2,500–$5,000 · ปรับรูปหน้า $4,000–$8,000"
+    }
+  };
+
+  function sendQuick(btn) {
+    const text = btn.textContent.trim();
+    addMsg(text, 'user');
+    document.getElementById('quickReplies').style.display = 'none';
+
+    const l = currentLang;
+    const r = botReplies[l];
+    let reply = r.default;
+    const lower = text.toLowerCase();
+    if (lower.includes('eye') || lower.includes('عيون') || lower.includes('ตา')) reply = r.eye;
+    else if (lower.includes('nose') || lower.includes('rhinoplasty') || lower.includes('أنف') || lower.includes('จมูก')) reply = r.nose;
+    else if (lower.includes('contour') || lower.includes('وجه') || lower.includes('หน้า')) reply = r.contour;
+    else if (lower.includes('price') || lower.includes('pricing') || lower.includes('أسعار') || lower.includes('ราคา')) reply = r.price;
+
+    setTimeout(() => addMsg(reply, 'bot'), 800);
+  }
+
+  function sendMsg() {
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    if (!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+
+    const l = currentLang;
+    const r = botReplies[l];
+    let reply = r.default;
+    const lower = text.toLowerCase();
+    if (lower.includes('eye') || lower.includes('عيون') || lower.includes('ตา')) reply = r.eye;
+    else if (lower.includes('nose') || lower.includes('rhinoplasty') || lower.includes('أنف') || lower.includes('จมูก')) reply = r.nose;
+    else if (lower.includes('contour') || lower.includes('وجه') || lower.includes('หน้า')) reply = r.contour;
+    else if (lower.includes('price') || lower.includes('cost') || lower.includes('أسعار') || lower.includes('ราคา')) reply = r.price;
+
+    setTimeout(() => addMsg(reply, 'bot'), 700);
+  }
+
+  function addMsg(text, type) {
+    const body = document.getElementById('chatBody');
+    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const div = document.createElement('div');
+    div.className = 'msg ' + type;
+    div.innerHTML = `
+      <div class="msg-avatar">${type === 'bot' ? '👩‍⚕️' : '🧑'}</div>
+      <div>
+        <div class="msg-bubble ${type}">${text}</div>
+        <div class="msg-time">${now}</div>
+      </div>`;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  // ── BOOKING ──
+  function openBooking(clinicName) {
+    document.getElementById('f-clinic').value = clinicName;
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function submitForm() {
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const surgery = document.getElementById('f-surgery').value;
+
+    if (!name || !email || !phone || !surgery) {
+      const msgs = { en: 'Please fill in all required fields.', ar: 'يرجى ملء جميع الحقول المطلوبة.', th: 'กรุณากรอกข้อมูลให้ครบ' };
+      showToast(msgs[currentLang]);
+      return;
+    }
+
+    const msgs = {
+      en: '✅ Consultation request sent! We will contact you within 24 hours.',
+      ar: '✅ تم إرسال طلب الاستشارة! سنتواصل معك خلال 24 ساعة.',
+      th: '✅ ส่งคำขอปรึกษาแล้ว! เราจะติดต่อคุณภายใน 24 ชั่วโมง'
+    };
+    showToast(msgs[currentLang]);
+
+    ['f-name','f-phone','f-email','f-notes'].forEach(id => document.getElementById(id).value = '');
+    ['f-surgery','f-clinic','f-country','f-lang'].forEach(id => document.getElementById(id).selectedIndex = 0);
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  function scrollToChat() {
+    document.getElementById('chat').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
